@@ -63,7 +63,10 @@ mongoose
   })
   .then((response)=>{
     console.log('Carrot Cake ha sido eliminada');
+    
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
+
+

@@ -53,6 +53,17 @@ mongoose
     })
     
   })
+  .then((response)=>{
+    return Recipe.findOneAndUpdate({title:'Rigatoni alla Genovese'},{duration:100},{new:true})
+
+  })
+  .then((response)=>{
+    console.log('La duración ha sido cambiada');
+    return Recipe.deleteOne({title:'Carrot Cake'})
+  })
+  .then((response)=>{
+    console.log('Carrot Cake ha sido eliminada');
+  })
   .catch(error => {
     console.error('Error connecting to the database', error);
   });

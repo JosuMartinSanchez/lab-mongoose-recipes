@@ -8,8 +8,7 @@ const data = require('./data');
 const MONGODB_URI = 'mongodb://localhost:27017/recipe-app';
 
 // Connection to the database "recipe-app"
-mongoose
-  .connect(MONGODB_URI)
+mongoose.connect(MONGODB_URI)
   .then(x => {
     console.log(`Connected to the database: "${x.connection.name}"`);
     // Before adding any recipes to the database, let's remove all existing ones
@@ -63,10 +62,11 @@ mongoose
   })
   .then((response)=>{
     console.log('Carrot Cake ha sido eliminada');
-    
+    mongoose.connection.close()
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
+    mongoose.connection.close()
   });
 
 

@@ -17,6 +17,7 @@ mongoose
   })
   .then(() => {
     // Run your code here, after you have insured that the connection was made
+    /*
     return Recipe.create(
       {
       title: "Asian Glazed Chicken Thighs",
@@ -37,9 +38,20 @@ mongoose
       duration: 40,
       creator: "Chef LePapu"
     })
+*/
   })
   .then((response)=>{
-    console.log(response)
+    //console.log(response)
+
+    return Recipe.insertMany(data)
+  })
+  .then((response)=>{
+    console.log("Insertados todos los elementos de data.json")
+    
+    response.forEach((element)=>{
+      console.log(element.title)
+    })
+    
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
